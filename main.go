@@ -6,7 +6,6 @@ import (
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
-	"strconv"
 )
 
 type Note struct {
@@ -46,7 +45,7 @@ func updateNote(w http.ResponseWriter, r *http.Request) {
 			//update item at id pos
 			var note Note
 			_ = json.NewDecoder(r.Body).Decode(&note)
-			note.Id = item.Id
+			note.Id = params["id"]
 			notes = append(notes, note)
 			json.NewEncoder(w).Encode(note)
 			fmt.Printf("Note Updated\n")
@@ -59,7 +58,6 @@ func createNote(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var note Note
 	_ = json.NewDecoder(r.Body).Decode(&note)
-	note.Id = strconv.Itoa(len(notes))
 	notes = append(notes, note)
 	fmt.Printf("Note Created\n")
 	json.NewEncoder(w).Encode(note)
