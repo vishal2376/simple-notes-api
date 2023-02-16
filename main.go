@@ -21,6 +21,7 @@ func main() {
 
 	appendData()
 
+	r.HandleFunc("/", welcome)
 	r.HandleFunc("/notes", getNotes).Methods("GET")
 	r.HandleFunc("/notes/{id}", getNote).Methods("GET")
 	r.HandleFunc("/notes", createNote).Methods("POST")
@@ -31,6 +32,11 @@ func main() {
 
 	log.Fatal(http.ListenAndServe(":8080", r))
 
+}
+
+func welcome(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Welcome to Notes API"))
 }
 
 func updateNote(w http.ResponseWriter, r *http.Request) {
