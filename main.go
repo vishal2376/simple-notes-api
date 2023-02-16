@@ -1,4 +1,4 @@
-package notes_api
+package main
 
 import (
 	"encoding/json"
