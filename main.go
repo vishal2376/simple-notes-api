@@ -27,9 +27,9 @@ func main() {
 	r.HandleFunc("/notes/{id}", deleteNote).Methods("DELETE")
 	r.HandleFunc("/notes/{id}", updateNote).Methods("PUT")
 
-	fmt.Printf("Starting Server at localhost:8080\n")
+	fmt.Printf("Starting Server\n")
 
-	log.Fatal(http.ListenAndServe("localhost:8080", r))
+	log.Fatal(http.ListenAndServe("https://simple-notes-api-production.up.railway.app/", r))
 
 }
 
