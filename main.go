@@ -29,7 +29,7 @@ func main() {
 
 	fmt.Printf("Starting Server\n")
 
-	log.Fatal(http.ListenAndServe("https://simple-notes-api-production.up.railway.app/", r))
+	log.Fatal(http.ListenAndServe("0.0.0.0:$PORT", r))
 
 }
 
